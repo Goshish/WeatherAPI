@@ -1,0 +1,38 @@
+    {% load static %}
+
+
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{% static 'weather_app/css/base.css' %}">
+        <title>Your weather</title>
+    </head>
+    <body>
+        <img src="{% static 'weather_app/img/weather.jpg' %}" alt="weather" class="img">
+        <nav class="enter_city">
+            <form method="post" action="{% url 'index' %}">
+                {% csrf_token %}
+                <input type="text" name="city" placeholder="Введите название города" class="city">
+                <input type="submit" value="Найти" class="search">
+            </form>
+        </nav>
+        <div class="weather-info">
+            {% if city %}
+                <h2>Погода в: {{ city }}<img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Погодная иконка"></h2>
+                <h3>Описание: {{ description }}</h3>
+                <p>Температура: {{ temp }}</p>
+                <p>Влажность: {{ humidity }}</p>
+                <p>Страна: {{ country_code }}</p>
+                <p>Координаты: {{ coordinate }}</p>
+            {% else %}
+                <p>Введите название города</p>
+            {% endif %}
+            <a href="{% url 'download_weather_history' %}?city={{ city }}" class="download-link">Скачать историю погоды за последние 5 дней</a>
+        </div>
+    </body>
+    </html>
