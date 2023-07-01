@@ -1,5 +1,5 @@
 # WeatherAPI
-Project WeatherAPI is a web application developed on the basis of the Django framework using weather API that helps to display the temperature for a given city with the function of downloading a CSV file with a weather history for 5 days.
+Project WeatherAPI is a web application developed on the basis of the Django framework using weather API that helps to display the temperature for a given city with the function of downloading a CSV file with a weather for 5 days.
 
 
 How to install:
