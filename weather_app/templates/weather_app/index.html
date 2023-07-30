@@ -17,22 +17,22 @@
         <nav class="enter_city">
             <form method="post" action="{% url 'index' %}">
                 {% csrf_token %}
-                <input type="text" name="city" placeholder="Введите название города" class="city">
-                <input type="submit" value="Найти" class="search">
+                <input type="text" name="city" placeholder="Enter city name" class="city">
+                <input type="submit" value="Search" class="search">
             </form>
         </nav>
         <div class="weather-info">
             {% if city %}
-                <h2>Погода в: {{ city }}<img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Погодная иконка"></h2>
-                <h3>Описание: {{ description }}</h3>
-                <p>Температура: {{ temp }}</p>
-                <p>Влажность: {{ humidity }}</p>
-                <p>Страна: {{ country_code }}</p>
-                <p>Координаты: {{ coordinate }}</p>
+                <h2>Weather in: {{ city }}<img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Погодная иконка"></h2>
+                <h3>Description: {{ description }}</h3>
+                <p>Temperature: {{ temp }}</p>
+                <p>Humidity: {{ humidity }}</p>
+                <p>Country: {{ country_code }}</p>
+                <p>Coordinates: {{ coordinate }}</p>
             {% else %}
-                <p>Введите название города</p>
+                <p>Enter city name</p>
             {% endif %}
-            <a href="{% url 'download_weather_history' %}?city={{ city }}" class="download-link">Скачать историю погоды за последние 5 дней</a>
+            <a href="{% url 'download_weather' %}?city={{ city }}" class="download-link">Weather for 5 days</a>
         </div>
     </body>
     </html>

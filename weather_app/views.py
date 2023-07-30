@@ -8,11 +8,10 @@ import json
 import datetime
 
 
-
 def index(request):
     if request.method == 'POST':
         city = request.POST['city']
-        source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=ru&appid=c5b5b2772557429ea52552bbcfed9642').read()
+        source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=&appid=c5b5b2772557429ea52552bbcfed9642').read()
 
         list_of_data = json.loads(source)
 
@@ -31,7 +30,7 @@ def index(request):
     return render(request, 'weather_app/index.html', data)
 
 
-def download_weather_history(request):
+def download_weather(request):
     city = request.GET.get('city')  # Получаем название города из GET-параметров
 
     if not city:
